@@ -11,7 +11,6 @@ const About1 = () => {
   return (
     <section
       className="about-section bg-cover"
-      data-background="/about-bg.png"
       style={{ padding: "80px 0", overflow: "hidden" }}
     >
       <style>{`
@@ -24,7 +23,7 @@ const About1 = () => {
         .about-section {
           overflow-x: hidden;
           background: #fff;
-          background-image: none !important; /* remove dotted hex background */
+          background-image: none !important; /* remove dotted pattern bg */
         }
 
         .about-wrapper { width: 100%; }
@@ -32,44 +31,40 @@ const About1 = () => {
 
         /* ===== Left image ===== */
         .about-image-col { padding-right: 16px; }
-        .about-photo-wrap {
-          width: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
+        .about-photo-wrap { width: 100%; display: flex; justify-content: center; align-items: center; }
         .about-photo {
-          display: block;
-          width: 100%;
-          height: auto;
-          object-fit: contain;
-          border-radius: 12px;
-          border: 2px solid #e6eef3;
-          box-shadow: 0 8px 24px rgba(0,0,0,.08);
-          background: #fff;
+          display: block; width: 100%; height: auto; object-fit: contain;
+          border-radius: 12px; border: 2px solid #e6eef3;
+          box-shadow: 0 8px 24px rgba(0,0,0,.08); background: #fff;
         }
 
         /* ===== Right column ===== */
         .about-text-col { padding-left: 16px; position: relative; z-index: 2; }
         .about-content .section-title h2 {
-          margin-bottom: 16px;
-          color: var(--ink);
-          font-weight: 800;
-          font-size: 34px;
-          line-height: 1.15;
+          margin-bottom: 16px; color: var(--ink);
+          font-weight: 800; font-size: 34px; line-height: 1.15;
         }
 
-        /* ===== Icon & Text alignment ===== */
-        .about-area {
-          --icon-size: 58px;
-          --gap: 18px;
-        }
-
+        /* ===== Icon List ===== */
+        .about-area { --icon-size: 58px; --gap: 18px; }
         .about-items {
           display: flex;
           align-items: center;
           gap: var(--gap);
           margin-bottom: 28px;
+          position: relative;
+        }
+
+        /* Dotted connector line */
+        .about-items:not(:last-child)::after {
+          content: "";
+          position: absolute;
+          left: calc(var(--icon-size) / 2);
+          top: calc(var(--icon-size) + 4px);
+          width: 2px;
+          height: calc(100% - var(--icon-size) - 10px);
+          border-left: 2px dotted var(--accent);
+          opacity: 0.6;
         }
 
         .about-items:last-child { margin-bottom: 0; }
@@ -84,7 +79,6 @@ const About1 = () => {
           align-items: center;
           justify-content: center;
           box-shadow: 0 4px 10px rgba(38,182,224,.35);
-          transform: translateY(2px);
         }
 
         .about-items .icon svg {
@@ -93,22 +87,14 @@ const About1 = () => {
           color: #fff;
         }
 
-        .about-items .content {
-          flex: 1;
-        }
-
+        .about-items .content { flex: 1; }
         .about-items .content h5 {
-          font-weight: 800;
-          margin: 0 0 6px;
-          color: var(--ink);
-          line-height: 1.2;
+          font-weight: 800; margin: 0 0 6px;
+          color: var(--ink); line-height: 1.2;
         }
-
         .about-items .content p {
-          margin: 0;
-          color: var(--muted);
-          line-height: 1.6;
-          font-size: 15.5px;
+          margin: 0; color: var(--muted);
+          line-height: 1.6; font-size: 15.5px;
         }
 
         /* ===== Responsive layout ===== */
@@ -123,6 +109,11 @@ const About1 = () => {
           .about-content .section-title h2 { font-size: 26px; }
           .about-items { flex-direction: row; align-items: flex-start; }
           .about-items .icon { width: 52px; height: 52px; }
+          .about-items:not(:last-child)::after {
+            left: 26px;
+            top: 56px;
+            height: 50%;
+          }
         }
       `}</style>
 
@@ -153,10 +144,7 @@ const About1 = () => {
                     <div className="icon"><Users2 /></div>
                     <div className="content">
                       <h5>Who We Are</h5>
-                      <p>
-                        A diversified group with interests in Shipping, Logistics,
-                        Distribution, IT, Clean Energy &amp; Trading.
-                      </p>
+                      <p>A diversified group with interests in Shipping, Logistics, Distribution, IT, Clean Energy &amp; Trading.</p>
                     </div>
                   </div>
 
@@ -172,18 +160,13 @@ const About1 = () => {
                     <div className="icon"><BadgeCheck /></div>
                     <div className="content">
                       <h5>Expertise</h5>
-                      <p>
-                        Each business unit is led by experts ensuring sustainability,
-                        execution &amp; growth.
-                      </p>
+                      <p>Each business unit is led by experts ensuring sustainability, execution &amp; growth.</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          {/* Group Companies REMOVED */}
         </div>
       </div>
     </section>
