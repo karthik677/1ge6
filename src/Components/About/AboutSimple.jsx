@@ -8,11 +8,22 @@ const About1 = () => {
     loadBackgroudImages();
   }, []);
 
+  const logos = [
+    { img: "/logosss01.png", alt: "Global Gateway Logistics", link: "https://www.ggl.sg/" },
+    { img: "/logosss03.png", alt: "OECL Supply Chain", link: "https://www.oecl.sg/" },
+    { img: "/logosss02.png", alt: "Global Consol", link: "https://www.globalconsol.com/" },
+    { img: "/Haixun_logo.png", alt: "Hai Xun Logistics", link: "https://www.haixun.co/" },
+    { img: "/one.png", alt: "ONE Global Logistics", link: "https://www.onegloballogistics.co/" },
+    { img: "/logosss04.png", alt: "Moltech Energy", link: "https://www.moltechglobal.com/" },
+    { img: "/logosss05.png", alt: "CityGn Distribution", link: "https://www.citygnenergy.com/" },
+    { img: "/logo-2.png", alt: "Future Net Logistics", link: "https://futurenetlogistics.com/" },
+  ];
+
   return (
     <section
       className="about-section bg-cover"
       data-background="/about-bg.png"
-      style={{ padding: "28px 0 0", overflow: "hidden" }}
+      style={{ padding: "80px 0 0", overflow: "hidden" }}
     >
       <style>{`
         :root {
@@ -21,35 +32,22 @@ const About1 = () => {
           --muted:#444;
         }
 
-        .about-section {
-          overflow-x: hidden;
-          background: #fff;
-        }
-
+        .about-section { overflow-x: hidden; background: #fff; }
         .about-wrapper { width: 100%; }
         .about-row { display: flex; flex-wrap: wrap; }
 
+        /* ===== Left image ===== */
         .about-image-col { padding-right: 16px; }
-        .about-photo-wrap {
-          width: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
+        .about-photo-wrap { width: 100%; display: flex; justify-content: center; align-items: center; }
         .about-photo {
-          display: block;
-          width: 100%;
-          height: auto;
-          object-fit: contain;
-          object-position: center;
-          border-radius: 12px;
-          border: 2px solid #e6eef3;
+          display: block; width: 100%; height: auto; object-fit: contain; object-position: center;
+          border-radius: 12px; border: 2px solid #e6eef3;
           box-shadow: 0 8px 24px rgba(0,0,0,.08);
           background: #fff;
         }
 
+        /* ===== Right column ===== */
         .about-text-col { padding-left: 16px; position: relative; z-index: 2; }
-
         .about-content .section-title h2 {
           margin-bottom: 16px;
           color: var(--ink);
@@ -59,58 +57,122 @@ const About1 = () => {
         }
 
         .about-area::before,
-        .about-area::after {
-          display: none !important;
-          content: none !important;
-        }
-        .about-area .line-image {
-          display: none !important;
+        .about-area::after { display: none !important; content: none !important; }
+        .about-area .line-image { display: none !important; }
+
+        /* ===== Perfectly aligned icons ===== */
+        .about-area {
+          --icon-size: 58px;
+          --gap: 18px;
         }
 
         .about-items {
           display: flex;
-          align-items: flex-start;
-          gap: 14px;
-          margin-bottom: 16px;
+          align-items: center;
+          gap: var(--gap);
+          margin-bottom: 28px;
         }
+
         .about-items:last-child { margin-bottom: 0; }
 
         .about-items .icon {
-          width: 54px;
-          height: 54px;
-          min-width: 54px;
+          flex-shrink: 0;
+          width: var(--icon-size);
+          height: var(--icon-size);
           border-radius: 50%;
-          background-color: var(--accent);
+          background: var(--accent);
           display: flex;
           align-items: center;
           justify-content: center;
           box-shadow: 0 4px 10px rgba(38,182,224,.35);
+          transform: translateY(2px);
         }
+
         .about-items .icon svg {
-          width: 24px;
-          height: 24px;
+          width: 26px;
+          height: 26px;
           color: #fff;
         }
+
+        .about-items .content {
+          flex: 1;
+        }
+
         .about-items .content h5 {
           font-weight: 800;
-          margin: 2px 0 6px;
+          margin: 0 0 6px;
           color: var(--ink);
+          line-height: 1.2;
         }
+
         .about-items .content p {
           margin: 0;
-          line-height: 1.55;
           color: var(--muted);
+          line-height: 1.6;
           font-size: 15.5px;
         }
 
-        @media (max-width: 991px) {
-          .about-row { flex-direction: column; }
-          .about-image-col { padding-right: 0; }
-          .about-text-col { padding-left: 0; margin-top: 12px; }
+        /* ===== Group Companies Grid (No Scroll) ===== */
+        .brand-block {
+          margin-top: 60px;
+          padding: 20px 0 0;
+          background: transparent !important;
+          border-radius: 0 !important;
+          box-shadow: none !important;
+          border: none !important;
+          position: relative;
+        }
+
+        .brand-title {
+          text-align: center;
+          margin: 0 0 24px;
+          font-size: 30px;
+          font-weight: 800;
+          color: var(--ink);
+        }
+
+        .brand-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          gap: 24px;
+          justify-items: center;
+          align-items: center;
+          max-width: 1000px;
+          margin: 0 auto;
+        }
+
+        .brand-logo {
+          max-height: 100px;
+          width: auto;
+          object-fit: contain;
+          display: block;
+          transition: transform 0.25s ease, filter 0.25s ease;
+          background: transparent !important;
+          mix-blend-mode: multiply;
+        }
+
+        .brand-logo:hover {
+          transform: scale(1.05);
+          filter: brightness(1.1);
+        }
+
+        .brand-link { display: inline-flex; align-items: center; justify-content: center; }
+
+        /* ===== Responsive layout ===== */
+        @media (max-width: 1199px) {
+          .about-row { flex-direction: column !important; }
+          .about-image-col { order: 1 !important; padding-right: 0; }
+          .about-text-col  { order: 2 !important; padding-left: 0; margin-top: 24px; }
+          .about-content, .about-items .content { text-align: left; }
         }
 
         @media (max-width: 575px) {
           .about-content .section-title h2 { font-size: 26px; }
+          .brand-title { font-size: 24px; margin-bottom: 18px; }
+          .about-items { flex-direction: row; align-items: flex-start; }
+          .about-items .icon { width: 52px; height: 52px; }
+          .brand-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 18px; }
+          .brand-logo { max-height: 80px; }
         }
       `}</style>
 
@@ -118,7 +180,7 @@ const About1 = () => {
         <div className="about-wrapper">
           <div className="row g-4 align-items-center mx-0 about-row">
             {/* Left Image */}
-            <div className="col-12 col-lg-7 about-image-col d-flex">
+            <div className="col-12 col-xl-7 about-image-col d-flex">
               <div className="about-photo-wrap w-100">
                 <img
                   src="/team1.jpg"
@@ -130,8 +192,8 @@ const About1 = () => {
             </div>
 
             {/* Right Text */}
-            <div className="col-12 col-lg-5 about-text-col">
-              <div className="about-content pe-lg-4 ps-lg-2 px-3 px-lg-0">
+            <div className="col-12 col-xl-5 about-text-col">
+              <div className="about-content pe-xl-4 ps-xl-2 px-3 px-xl-0">
                 <div className="section-title">
                   <h2>1 Global Enterprises</h2>
                 </div>
@@ -141,9 +203,7 @@ const About1 = () => {
                     <div className="icon"><Users2 /></div>
                     <div className="content">
                       <h5>Who We Are</h5>
-                      <p>
-                        A diversified group with interests in Shipping, Logistics, Distribution, IT, Clean Energy &amp; Trading.
-                      </p>
+                      <p>A diversified group with interests in Shipping, Logistics, Distribution, IT, Clean Energy &amp; Trading.</p>
                     </div>
                   </div>
 
@@ -159,9 +219,7 @@ const About1 = () => {
                     <div className="icon"><BadgeCheck /></div>
                     <div className="content">
                       <h5>Expertise</h5>
-                      <p>
-                        Each business unit is led by experts ensuring sustainability, execution &amp; growth.
-                      </p>
+                      <p>Each business unit is led by experts ensuring sustainability, execution &amp; growth.</p>
                     </div>
                   </div>
                 </div>
@@ -169,7 +227,24 @@ const About1 = () => {
             </div>
           </div>
 
-          {/* Removed Group Companies Section */}
+          {/* Group Companies Grid */}
+          <div className="brand-block">
+            <h3 className="brand-title">Group Companies</h3>
+            <div className="brand-grid">
+              {logos.map((item, i) => (
+                <a
+                  key={i}
+                  className="brand-link"
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={`Open ${item.alt}`}
+                >
+                  <img src={item.img} alt={item.alt} className="brand-logo" loading="lazy" />
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
