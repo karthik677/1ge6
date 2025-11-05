@@ -33,26 +33,57 @@ const About1 = () => {
         .about-image-col { padding-right: 16px; }
         .about-photo-wrap { width: 100%; display: flex; justify-content: center; align-items: center; }
         .about-photo {
-          display: block; width: 100%; height: auto; object-fit: contain;
-          border-radius: 12px; border: 2px solid #e6eef3;
-          box-shadow: 0 8px 24px rgba(0,0,0,.08); background: #fff;
+          display: block;
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+          border-radius: 12px;
+          border: 2px solid #e6eef3;
+          box-shadow: 0 8px 24px rgba(0,0,0,.08);
+          background: #fff;
         }
 
         /* ===== Right column ===== */
         .about-text-col { padding-left: 16px; position: relative; z-index: 2; }
         .about-content .section-title h2 {
-          margin-bottom: 16px; color: var(--ink);
-          font-weight: 800; font-size: 34px; line-height: 1.15;
+          margin-bottom: 16px;
+          color: var(--ink);
+          font-weight: 800;
+          font-size: 34px;
+          line-height: 1.15;
         }
 
         /* ===== Icon List ===== */
         .about-area { --icon-size: 58px; --gap: 18px; }
+
         .about-items {
           display: flex;
           align-items: center;
           gap: var(--gap);
           margin-bottom: 28px;
           position: relative;
+          border: none !important;
+        }
+
+        /* 🚫 REMOVE ALL DOTTED LINES */
+        .about-items::before,
+        .about-items::after,
+        .about-items .icon::before,
+        .about-items .icon::after {
+          content: none !important;
+          display: none !important;
+          border: none !important;
+          background: none !important;
+        }
+        .about-items * {
+          border: none !important;
+          border-style: none !important;
+        }
+        .about-area::before,
+        .about-area::after,
+        .about-area .line-image {
+          content: none !important;
+          display: none !important;
         }
 
         .about-items:last-child { margin-bottom: 0; }
@@ -77,12 +108,16 @@ const About1 = () => {
 
         .about-items .content { flex: 1; }
         .about-items .content h5 {
-          font-weight: 800; margin: 0 0 6px;
-          color: var(--ink); line-height: 1.2;
+          font-weight: 800;
+          margin: 0 0 6px;
+          color: var(--ink);
+          line-height: 1.2;
         }
         .about-items .content p {
-          margin: 0; color: var(--muted);
-          line-height: 1.6; font-size: 15.5px;
+          margin: 0;
+          color: var(--muted);
+          line-height: 1.6;
+          font-size: 15.5px;
         }
 
         /* ===== Responsive layout ===== */
